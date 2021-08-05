@@ -1,0 +1,184 @@
+@import "preflight";
+//
+:root {
+    --bg-color: #fff;
+    --black-color: 17, 24, 39;
+    // overlay
+    --accent-color: #5f45ba;
+    --grey-color: #f3f4f9;
+    --overlay-color: 17, 24, 39;
+    --overlay-text-color: #fff;
+    --overlay-duration: 0.5s;
+    --grid-gap: 4px;
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url("../fonts/font.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Baloo";
+    src: url("../fonts/baloo.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    color: rgb(83, 105, 106);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 15px;
+    // font-size: 16px;
+}
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.chart-area {
+    width: 300px;
+    height: 300px;
+    @media only screen and (max-width: 32rem) {
+        width: 100%;
+        max-width: 300px;
+    }
+    margin: 0 auto 2rem;
+    position: relative;
+    .balance-total {
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        small {
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        span {
+            display: block;
+            font-family: Baloo, sans-serif;
+            font-size: 2rem;
+            line-height: 1.15em;
+            color: var(--accent-color);
+        }
+    }
+    .min,
+    .max {
+        position: absolute;
+        bottom: 0;
+        opacity: 0.5;
+    }
+    .min {
+        left: 25%;
+    }
+    .max {
+        right: 25%;
+    }
+    // position: relative;
+    // display: flex;
+    // overflow: hidden;
+    // z-index: 0;
+    // .data-1 {
+    //     content: "";
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     border: $size * 0.25 solid #86ddd4;
+    //     border-radius: 100%;
+    // }
+    // .data-2 {
+    //     content: "";
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     border: $size * 0.25 solid #20336e;
+    //     border-radius: 100%;
+    // }
+    // .cutout {
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 50%;
+    //     transform: translate(-50%, 0);
+    //     z-index: 10;
+    //     width: 0;
+    //     height: 0;
+    //     border-left: $size solid transparent;
+    //     border-right: $size solid transparent;
+    //     border-bottom: $size solid#fff;
+    // }
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 32rem;
+    margin: 0 auto;
+    @media only screen and (max-width: 32rem) {
+        padding: 1rem;
+    }
+    svg {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+    }
+}
+#table-wrapper {
+    padding: 2rem 0;
+}
+.table-header {
+    display: flex;
+    font-family: Baloo, sans-serif;
+    color: var(--accent-color);
+    font-size: 1.25rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--grey-color);
+    justify-content: space-between;
+}
+.table-content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    > div {
+        &:nth-child(odd) {
+            grid-column: span 2 / span 2;
+        }
+        &:nth-child(even) {
+            text-align: right;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: end;
+            font-family: Baloo, sans-serif;
+        }
+        strong {
+            font-family: Baloo, sans-serif;
+            font-weight: 400;
+            display: block;
+            line-height: 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        small {
+            opacity: 0.5;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 1.25em;
+            text-overflow: ellipsis;
+        }
+        span {
+            display: block;
+            width: 100%;
+        }
+    }
+}
